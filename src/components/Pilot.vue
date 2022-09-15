@@ -269,5 +269,27 @@ export default {
         </div>
       </div>
     </div>
+    <div class="mech-column">
+      <div class="mech-info">
+        <div class="name">
+          <h1>Active Mech</h1>
+          <h2>{{ activeMech.name }}</h2>
+        </div>
+        <div class="manufacturer">
+          <svg
+            :data-src="`${mechManufacturerIcon}#Content`"
+            style="width:48px; height:48px; fill:var(--primary-color)"
+          />
+          <div class="manufacturer-info">
+            <h1>{{ activeMech.manufacturer }}</h1>
+            <h2>{{ activeMech.frame_name }}</h2>
+          </div>
+        </div>
+        <div class="role">
+          {{ activeMech.mechtype }}
+        </div>
+      </div>
+      <img :src="pilot.mechs[0].cloud_portrait" class="portrait">
+    </div>
   </div>
 </template>
