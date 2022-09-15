@@ -1,28 +1,40 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import viteCompression from "vite-plugin-compression";
-import path from "path";
+import path from 'path'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import viteCompression from 'vite-plugin-compression'
+import VueTypeImports from 'vite-plugin-vue-type-imports'
+import eslintPlugin from 'vite-plugin-eslint'
+import { imagetools } from 'vite-imagetools'
+// import RemoteAssets from 'vite-plugin-remote-assets'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     viteCompression({
-      algorithm: "brotliCompress",
+      algorithm: 'brotliCompress',
+    }),
+    VueTypeImports(),
+    eslintPlugin(),
+    // RemoteAssets(),
+    imagetools({
+      defaultDirectives: () => {
+        return new URLSearchParams({ format: 'webp' })
+      },
     }),
   ],
-  base: "./",
+  base: './',
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   optimizeDeps: {
     include: [
-      "lancer-data",
-      "lancer-ktb-data",
-      "lancer-nrfaw-data",
-      "lancer-longrim-data"
+      'lancer-data',
+      'lancer-ktb-data',
+      'lancer-nrfaw-data',
+      'lancer-longrim-data',
     ],
   },
   build: {
@@ -36,4 +48,4 @@ export default defineConfig({
   css: {
     devSourcemap: true,
   },
-});
+})

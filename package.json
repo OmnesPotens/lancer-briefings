@@ -1,37 +1,67 @@
 {
-	"name": "lancer-briefings",
-	"version": "0.2.0",
-	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"serve": "vite preview",
-		"preview": "vite preview",
-		"format": "prettier .  --write"
-	},
-	"dependencies": {
-		"@oruga-ui/oruga-next": "^0.5.5",
-		"chart.js": "^3.9.1",
-		"external-svg-loader": "^1.6.1",
-		"lancer-data": "^3.0.46",
-		"lancer-ktb-data": "^1.1.0",
-		"lancer-longrim-data": "^1.0.11",
-		"lancer-nrfaw-data": "^1.0.8",
-		"remove-markdown": "^0.5.0",
-		"vue": "^3.2.37",
-		"vue-chart-3": "^3.1.8",
-		"vue-router": "^4.1.4",
-		"vue-writer": "^1.2.0",
-		"vue3-markdown-it": "^1.0.10"
-	},
-	"devDependencies": {
-		"@mdi/font": "^7.0.96",
-		"@types/node": "^18.7.14",
-		"@vitejs/plugin-vue": "^3.0.3",
-		"prettier": "2.7.1",
-		"vite": "^3.0.9",
-		"vite-plugin-compression": "^0.5.1"
-	},
-	"optionalDependencies": {
-		"esbuild-linux-64": "^0.15.5"
-	}
+  "name": "lancer-briefings",
+  "version": "0.2.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
+    "lint:markup": "vue-tsc --noEmit",
+    "lint:style": "stylelint src/**/*.{css,scss,vue}",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@oruga-ui/oruga-next": "^0.5.5",
+    "@vue/eslint-config-typescript": "^11.0.1",
+    "chart.js": "^3.9.1",
+    "external-svg-loader": "^1.6.1",
+    "lancer-data": "^3.0.46",
+    "lancer-ktb-data": "^1.1.0",
+    "lancer-longrim-data": "^1.0.11",
+    "lancer-nrfaw-data": "^1.0.8",
+    "remove-markdown": "^0.5.0",
+    "vue": "^3.2.37",
+    "vue-chart-3": "^3.1.8",
+    "vue-router": "^4.1.4",
+    "vue-writer": "^1.2.0",
+    "vue3-markdown-it": "^1.0.10"
+  },
+  "optionalDependencies": {
+    "esbuild-linux-64": "^0.15.5"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.26.3",
+    "@mdi/font": "^7.0.96",
+    "@types/markdown-it-link-attributes": "^3.0.1",
+    "@types/node": "^18.7.14",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "@vitejs/plugin-vue": "^3.0.3",
+    "eslint": "^8.23.1",
+    "eslint-plugin-vue": "^9.4.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "stylelint": "^14.11.0",
+    "stylelint-config-recommended": "^9.0.0",
+    "stylelint-config-standard": "^28.0.0",
+    "typescript": "^4.8.3",
+    "vite": "^3.0.9",
+    "vite-imagetools": "^4.0.9",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-remote-assets": "^0.3.0",
+    "vite-plugin-vue-type-imports": "^0.2.2",
+    "vue-tsc": "^0.40.13"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --fix",
+    "*.{css,scss,vue}": "stylelint --fix"
+  }
 }
